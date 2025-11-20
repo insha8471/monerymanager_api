@@ -58,11 +58,11 @@ public class IncomeService {
     }
 
     // Delete an expense by id for the current user
-    public void deleteIncomeById(Long expenseID) {
+    public void deleteIncomeById(Long id) {
         ProfileEntity profile = profileService.getCurrentProfile();
 
-        IncomeEntity entity = incomeRepository.findById(profile.getId())
-                .orElseThrow(() -> new RuntimeException("Expense not found"));
+        IncomeEntity entity = incomeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Income not found"));
 
         if(entity.getProfile().getId() != profile.getId()) {
             throw new RuntimeException("Unauthorized to delete this income");

@@ -57,10 +57,10 @@ public class ExpenseService {
     }
 
     // Delete an expense by id for the current user
-    public void deleteExpenseById(Long expenseID) {
+    public void deleteExpenseById(Long id) {
         ProfileEntity profile = profileService.getCurrentProfile();
 
-        ExpenseEntity entity = expenseRepository.findById(profile.getId())
+        ExpenseEntity entity = expenseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Expense not found"));
 
         if(entity.getProfile().getId() != profile.getId()) {
@@ -84,7 +84,7 @@ public class ExpenseService {
     public BigDecimal getTotalExpensesForCurrentUser() {
         ProfileEntity profile = profileService.getCurrentProfile();
 
-        BigDecimal totalExpenses = expenseRepository.findToatalExpenseAmountByProfileId(profile.getId());
+        BigDecimal totalExpenses = expenseRepository.findTotalExpenseAmountByProfileId(profile.getId());
         return totalExpenses != null ? totalExpenses : BigDecimal.ZERO;
     }
 

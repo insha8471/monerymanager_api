@@ -50,10 +50,16 @@ public class ProfileController {
         }
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<ProfileEntity> getCurrentProfile() {
-        ProfileEntity profileEntity = profileService.getCurrentProfile();
-        return ResponseEntity.ok(profileEntity);
+//    @GetMapping("/me")
+//    public ResponseEntity<ProfileDTO> getCurrentProfile() {
+//        ProfileDTO profileDTO = profileService.getCurrentProfile();
+//        return ResponseEntity.ok(profileDTO);
+//    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<ProfileDTO> getPublicProfile() {
+        ProfileDTO profileDTO = profileService.getPublicProfile(null);
+        return ResponseEntity.ok(profileDTO);
     }
 
 }

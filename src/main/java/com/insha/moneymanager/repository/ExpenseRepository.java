@@ -23,7 +23,7 @@ public interface ExpenseRepository  extends JpaRepository<ExpenseEntity, Long> {
 
     // this method is used to calculate total expense amount by profileId
     @Query("SELECT SUM(e.amount) FROM ExpenseEntity e WHERE e.profile.id = :profileId")
-    BigDecimal findToatalExpenseAmountByProfileId(@Param("profileId") Long profileId);
+    BigDecimal findTotalExpenseAmountByProfileId(@Param("profileId") Long profileId);
 
 
     // this method is used to search expenses by profileId, date range and keyword in name with sorting
